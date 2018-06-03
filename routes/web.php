@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/users', 'UsersController@index');
+Route::get('/api/users', 'UsersController@index');
 
-Route::get('/{id}', function($id){return $id;});
+Route::get('/api/users/{id}', 'UsersController@show');
