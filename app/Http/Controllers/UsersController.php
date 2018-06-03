@@ -45,5 +45,9 @@ class UsersController extends Controller
       return  response()->json( [ 'user' => $user_json ] );
     }
 
+    public function delete($id, $conn_id) {
+      
+    }
+
 
 }
