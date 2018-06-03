@@ -10,53 +10,39 @@ class UsersController extends Controller
     public function index() {
       $users =  User::all();
 
-
       // foreach ($users as $key => $user) {
         foreach ($users as $user) {
           $conn = User::find($user['id'])->connections;
-          // $conn_arr = (array) $conn
-          // $conn_id = array_map(function ($n){ $n["userb"]}, $conn_arr);
-          $test = [];
+          $names = [];
           foreach ($conn as $link) {
             $info = User::find($link['userb']);
-            $info = $info['fname'] . " " . $info['lname'];
-            array_push($test, $info);
+            $full_name = $info['fname'] . " " . $info['lname'];
+            array_push($names, ['id' => $info['id'], 'full_name' => $full_name, 'color' => $info['color']]);
           }
-          $user['connection'] = $test;
+          $user['names'] = $names;
         }
 
-      return  $users;
+        $users = $users->toArray();
+
+      return response()->json( [ 'users' => $users ] );
     }
 
     public function show($id) {
-      // $conn = User::find($id)->connections;
-      // $test = [];
-      // foreach ($conn as $link) {
-      //   $info = User::find($link['userb']);
-      //   $info = $info['fname'] . " " . $info['lname'];
-      //   array_push($test, $info);
-      // }
-      // $conn['connection'] = $test;
-      //
-      // return  $conn;
-      $users =  User::all();
+      $conn = User::find($id)->connections;
+      $names = [];
+      $user_json = [];
+      foreach ($conn as $link) {
+        $info = User::find($link['userb']);
+        $full_name = $info['fname'] . " " . $info['lname'];
+        array_push($names, ['id' => $info['id'], 'full_name' => $full_name, 'color' => $info['color']]);
+      }
+      $user_json['fname'] = User::find($id)->fname;
+      $user_json['lname'] = User::find($id)->lname;
+      $user_json['color'] = User::find($id)->color;
+      $user_json['id'] = $id;
+      $user_json['names'] = $names;
 
-
-      // foreach ($users as $key => $user) {
-        foreach ($users as $user) {
-          $conn = User::find($user['id'])->connections;
-          // $conn_arr = (array) $conn
-          // $conn_id = array_map(function ($n){ $n["userb"]}, $conn_arr);
-          $test = [];
-          foreach ($conn as $link) {
-            $info = User::find($link['userb']);
-            $info = $info['fname'] . " " . $info['lname'];
-            array_push($test, $info);
-          }
-          $user['connection'] = $test;
-        }
-
-      return  $users;
+      return  response()->json( [ 'user' => $user_json ] );
     }
 
 

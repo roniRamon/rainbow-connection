@@ -1,11 +1,8 @@
 
-<h1>Show Page!</h1>
-
-
 <header>
-  <h2>{{model.fullName}}</h2>
+  <h2>{{model.fname}} {{model.lname}}</h2>
   <h3>Favorite Color:
-    <span style={{model.myColor}}>{{model.favorite-color}}</span>
+    <span style="color: {{model.color}}">{{model.color}}</span>
   </h3>
 </header>
 
@@ -19,17 +16,21 @@
       <th class="small">Remove Connection</th>
     </tr>
   </thead>
-    {{#each model as |user|}}
+    {{#each model.names as |name|}}
     <tr>
       <td>
-        {{#link-to 'show' user.id}}
-          {{user.firstname}} {{user.lastname}}
+        {{#link-to 'show' name.id}}
+          {{name.full_name}}
         {{/link-to}}
+        <br/>
       </td>
-      <td style="color: {{user.favorite-color}}">{{user.favorite-color}}</td>
+      <td style="color: {{name.color}}">
+          {{name.color}}
+        <br/>
+      </td>
       <td class="small">
         <button type="button" {{action "deleteConnection" user.id}}>Remove</button>
       </td>
     </tr>
-  {{/each}}
+    {{/each}}
 </table>

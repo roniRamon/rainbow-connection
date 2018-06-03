@@ -4,7 +4,7 @@ export default DS.Model.extend({
   fname: DS.attr('string'),
   lname: DS.attr('string'),
   color: DS.attr('string'),
-  connection: DS.attr(),
+  names: DS.attr(),
 
   deleteConnection(connection_id) {
     const modelName = this.constructor.modelName;
