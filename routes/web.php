@@ -14,3 +14,5 @@
 Route::get('users', 'UsersController@index');
 
 Route::get('users/{id}', 'UsersController@show');
+
+Route::delete('users/{id}', 'UsersController@destroy');

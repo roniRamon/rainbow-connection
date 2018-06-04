@@ -34,7 +34,7 @@ class UsersController extends Controller
       foreach ($conn as $link) {
         $info = User::find($link['userb']);
         $full_name = $info['fname'] . " " . $info['lname'];
-        array_push($names, ['id' => $info['id'], 'full_name' => $full_name, 'color' => $info['color']]);
+        array_push($names, ['id' => $info['id'], 'full_name' => $full_name, 'color' => $info['color'], "conn_id" => $link['id']]);
       }
       $user_json['fname'] = User::find($id)->fname;
       $user_json['lname'] = User::find($id)->lname;
@@ -45,8 +45,9 @@ class UsersController extends Controller
       return  response()->json( [ 'user' => $user_json ] );
     }
 
-    public function delete($id, $conn_id) {
-      
+    public function destroy($id) {
+
+      return Connection::destroy($id);;
     }
 
 

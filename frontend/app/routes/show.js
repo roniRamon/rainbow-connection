@@ -6,11 +6,12 @@ export default Route.extend({
     },
 
     actions: {
-        deleteConnection(userId, friendId){
-          this.get('ajax').request(`users/${friendId}`, {
-            method: 'DELETE',
-            data: { userId: userId},
-          }).then(() => {});
+        deleteConnection($id){
+          window.$.ajax({
+            url: `/users/${$id}`,
+            type: 'DELETE',
+          });
         },
+
       }
 });

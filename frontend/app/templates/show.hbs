@@ -4,6 +4,16 @@
   <h3>Favorite Color:
     <span style="color: {{model.color}}">{{model.color}}</span>
   </h3>
+
+  <!-- <select onchange={{action "setSelection" value="target.value"}}>
+   <option disabled selected>
+     <span style="color: {{model.color}}">{{model.color}}</span>
+   </option>
+      <option value="cats">Cats</option>
+      <option value="dogs">Dogs</option>
+  </select>
+  <button {{action 'submit'}}>Submit</button> -->
+
 </header>
 
 
@@ -29,7 +39,7 @@
         <br/>
       </td>
       <td >
-        <button type="button" {{action "deleteConnection" name.id}}>Delete</button>
+        <button type="button" {{action "deleteConnection" name.conn_id }}>Delete</button>
       </td>
     </tr>
     {{/each}}
