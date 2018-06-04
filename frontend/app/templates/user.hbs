@@ -2,7 +2,6 @@
 <table class="table">
  <thead class="thead-dark">
    <tr>
-     <th scope="col">#</th>
      <th scope="col">Full Name </th>
      <th scope="col">Color </th>
      <th scope="col">Connections</th>
@@ -11,13 +10,14 @@
  <tbody>
    {{#each model as |user|}}
      <tr>
-       <th scope="row">{{user.id}}</th>
        <td>
          {{#link-to 'show' user}}
            {{user.fname}} {{user.lname}}
          {{/link-to}}
        </td>
-       <td>{{user.color}}</td>
+       <td style="color: {{user.color}}">
+          {{user.color}}
+        </td>
        <td>{{user.connection}}</td>
      </tr>
    {{/each}}

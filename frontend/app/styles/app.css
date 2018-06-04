@@ -1,0 +1,12 @@
+nav {
+  background-color: red;
+}
+
+.header-rc > a {
+  color: white;
+  font-size: 28px;
+}
+
+.main {
+  margin-top: 100px;
+}

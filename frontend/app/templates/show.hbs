@@ -1,29 +1,22 @@
 
 <header>
-  <h2>{{model.fname}} {{model.lname}}</h2>
-  <h3>Favorite Color:
-    <span style="color: {{model.color}}">{{model.color}}</span>
+  <h4><strong>{{model.fname}} {{model.lname}}</strong> -
+    Favorite Color:
+      <span style="color: {{model.color}}">{{model.color}}</span>
+  </h4>
+  <h3>
   </h3>
-
-  <!-- <select onchange={{action "setSelection" value="target.value"}}>
-   <option disabled selected>
-     <span style="color: {{model.color}}">{{model.color}}</span>
-   </option>
-      <option value="cats">Cats</option>
-      <option value="dogs">Dogs</option>
-  </select>
-  <button {{action 'submit'}}>Submit</button> -->
-
+  <br/>
+  <h6>{{model.fname}} {{model.lname}} Connections:</h6>
 </header>
 
 
-<table>
-  <thead>
-    <h3>Connections:</h3>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>Full Name</th>
-      <th>Favorite Color</th>
-      <th>Delete Connection</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Favorite Color</th>
+      <th scope="col">Delete Connection</th>
     </tr>
   </thead>
     {{#each model.names as |name|}}

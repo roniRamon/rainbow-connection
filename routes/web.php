@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('users', 'UsersController@index');
+Route::get('api/users', 'UsersController@index');
 
-Route::get('users/{id}', 'UsersController@show');
+Route::get('api/users/{id}', 'UsersController@show');
 
-Route::delete('/users/{id}', 'UsersController@destroy');
+Route::delete('api/user/{id}', 'UsersController@destroy');
