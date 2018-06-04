@@ -27,6 +27,13 @@ class UsersController extends Controller
       return response()->json( [ 'users' => $users ] );
     }
 
+    public function destroy($id) {
+      $conn = Connection::find($id);
+      $conn->delete();
+
+      return "true";
+    }
+
     public function show($id) {
       $conn = User::find($id)->connections;
       $names = [];
@@ -45,10 +52,7 @@ class UsersController extends Controller
       return  response()->json( [ 'user' => $user_json ] );
     }
 
-    public function destroy($id) {
 
-      return Connection::destroy($id);;
-    }
 
 
 }
